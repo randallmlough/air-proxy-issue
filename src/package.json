@@ -1,0 +1,19 @@
+{
+  "name": "justplanecoffee.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "build": "npm run build:css",
+    "build:css": "npx tailwindcss -i css/input.css -o ./dist/css/styles.css --minify",
+    "css:watch": "npx tailwindcss -i css/input.css -o ./dist/css/styles.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.9",
+    "@tailwindcss/typography": "^0.5.15"
+  }
+}

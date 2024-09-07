@@ -1,0 +1,22 @@
+x-services-volume:
+  &services-volume
+  type: bind
+  source: .
+  target: /app
+
+services:
+  web:
+    container_name: web-container
+    image: web-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    volumes:
+      - *services-volume
+volumes:
+  postgres-data:
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,19 @@
+package pages
+
+import (
+	"github.com/jpc/ui/components"
+	"github.com/jpc/ui/layouts"
+)
+
+templ Home() {
+	@layouts.Base() {
+		<div>
+			@components.Button(components.Show(), components.WithAttrs(map[string]any{"class": "text-red-700"})) {
+				<div>I have optional props being bassed 2</div>
+			}
+			@components.Button() {
+                <div>No props required to pass for templ to function!</div>
+            }
+		</div>
+	}
+}

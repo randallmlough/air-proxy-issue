@@ -1,0 +1,54 @@
+package components
+
+// ButtonProps represents a server with configurable options
+type ButtonProps struct {
+	show bool
+	attrs templ.Attributes
+}
+
+// Option is a function that configures a ButtonProps
+type Option func(*ButtonProps)
+
+// WithHost sets the host option
+func WithAttrs(attrs map[string]any) Option {
+	return func(p *ButtonProps) {
+		p.attrs = attrs
+	}
+}
+
+func Show() Option {
+	return func(p *ButtonProps) {
+		p.show = true
+	}
+}
+
+func (p ButtonProps) hasAttrs() (attrs templ.Attributes, ok bool) {
+	if p.attrs != nil {
+		return p.attrs, true
+	}
+	return nil, false
+}
+
+func Button(opts ...Option) templ.Component {
+	p := &ButtonProps{}
+	// Apply each option to the ButtonProps
+	for _, opt := range opts {
+		opt(p)
+	}
+
+	return p.Button()
+}
+
+templ (p *ButtonProps) Button() {
+	<p
+		if p.attrs != nil {
+			{ p.attrs... }
+		}
+	>Text</p>
+	if p.show {
+		<div>Showing 4</div>
+	}
+	<div>
+		{ children... }
+	</div>
+}
